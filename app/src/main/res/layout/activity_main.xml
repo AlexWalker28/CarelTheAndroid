@@ -9,6 +9,15 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="kg.kloop.rinat.newcarel.MainActivity">
 
+    <Button
+        android:text="Turn Left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/turnLeftbutton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="120dp" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,7 +25,32 @@
         android:text="Large Text"
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Turn Around"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/turnAroundButton"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="27dp"
+        android:layout_alignEnd="@+id/turnLeftbutton" />
+
+    <Button
+        android:text="Turn Right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/turnRightbutton"
+        android:layout_alignBottom="@+id/turnLeftbutton"
+        android:layout_toEndOf="@+id/turnAroundButton"
+        android:layout_alignTop="@+id/turnLeftbutton" />
+
+    <Button
+        android:text="Move"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/turnAroundButton"
+        android:layout_alignEnd="@+id/turnRightbutton"
+        android:id="@+id/moveButton" />
 </RelativeLayout>

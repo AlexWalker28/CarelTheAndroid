@@ -27,8 +27,40 @@ public class MainActivity extends AppCompatActivity {
         canvas = new GameCanvas(textView);
         grid = new CarelGrid(6, 4); // здесь изменяется размер поля (x,y)
         carel = new Carel(canvas, grid);
+        Button turnLeftButton = (Button)findViewById(R.id.turnLeftbutton);
+        Button turnRightButton = (Button)findViewById(R.id.turnRightbutton);
+        Button turnAroundButton = (Button)findViewById(R.id.turnAroundButton);
+        Button moveButton = (Button)findViewById(R.id.moveButton);
 
 
+
+        turnLeftButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                turnLeft();
+            }
+        });
+
+        turnRightButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                turnRight();
+            }
+        });
+
+        turnAroundButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                turnAround();
+            }
+        });
+
+        moveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                move();
+            }
+        });
 
         /* Задания:
         * 1) Поворот направо
@@ -57,9 +89,14 @@ public class MainActivity extends AppCompatActivity {
         //Ниже идут команды Карелу.
 
 
-        carel.turnLeft();
-
-
+   // goToWall();
+    //turnAround();
+    //turnRight();
+    //goHome();
+    //fillLine();
+    //fillEdge();
+    //fillAfterOneRow();
+    //filldiagonal();
         //Команды Карелу закончились.
 
     }
@@ -76,6 +113,116 @@ public class MainActivity extends AppCompatActivity {
 
     private void turnLeft() {
         carel.turnLeft();
+    }
+
+    //1
+    private void turnRight(){
+        carel.turnLeft();
+        carel.turnLeft();
+        carel.turnLeft();
+    }
+
+    //2
+    private void turnAround(){
+        carel.turnLeft();
+        carel.turnLeft();
+    }
+
+    //3
+    private void goToWall(){
+        while(isFrontClear()){
+            move();
+        }
+    }
+
+    //4
+    private void goHome(){
+        turnAround();
+        goToWall();
+        turnAround();
+    }
+
+    //5
+    private void fillEdge(){
+       for(int i=0;i<4;i++){
+           fillLine();
+           turnRight();
+
+
+        }
+    }
+
+
+    private void fillLine() {
+        while(true){
+            if(isBeeper()){
+                if(isFrontClear()) {
+                    move();
+                } else break;
+            } else {
+            dropBeeper();
+            }
+        }
+    }
+
+    //6
+    private void fillAfterOneRow(){
+
+        while(true) {
+            fillLine();
+            goHome();
+            goDown();
+            turnRight();
+            if (isFrontClear()) {
+                move();
+                turnLeft();
+            }else {
+                turnLeft();
+                break;
+            }
+        }
+    }
+
+    //7
+    private void filldiagonal() {
+        while (true) {
+            fillCell();
+            if(isFrontClear()){
+            move();
+            goDown();
+            }else break;
+        }
+    }
+
+    private void fillCell() {
+        if(!isBeeper()){dropBeeper();
+        }
+    }
+
+    //8
+    private void fillChess(){
+        while(true){
+            fillCell();
+        }
+    }
+
+    private void goDown() {
+        turnRight();
+        if(isFrontClear()){
+            move();
+            turnLeft();
+        }
+    }
+
+
+    private void goUp() {
+        turnLeft();
+        if(isFrontClear())move();
+        turnRight();
+    }
+
+    private void saveMove() {
+        if(isFrontClear()) move();
     }
 
     private void collectBeeper() {
