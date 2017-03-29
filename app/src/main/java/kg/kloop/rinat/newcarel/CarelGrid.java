@@ -8,6 +8,7 @@ import java.util.Random;
 public class CarelGrid extends Object {
 
     public CarelGrid() {
+        map = new int[6][4];
         if (getWidth() >= 4 && getHeight() >= 4) {
             map[1][1] = 1;
             map[3][3] = 1;
