@@ -38,6 +38,45 @@ public class MainActivity extends AppCompatActivity {
 
     }//Здесь пишем новые методы.***********************************
 
+    private void makeChessField(){
+        while (true){
+            makeChessLine();
+            if(isBeeper()){
+                turnRight();
+                if(isFrontClear()){
+                    move();
+                }else break;
+                turnRight();
+                move();
+            } else if (!isBeeper()){
+                turnRight();
+                if(isFrontClear()){
+                    move();
+                } else break;
+                turnRight();
+            }
+            makeChessLine();
+            turnLeft();
+            if(isFrontClear()){
+                move();
+            } else break;
+            turnLeft();
+        }
+    }
+
+    private void makeChessLine() {
+        while (true){
+            dropBeeper();
+            if(isFrontClear()){
+                move();
+            } else break;
+            if(isFrontClear()){
+                move();
+            } else break;
+        }
+    }
+
+
     private void makeChessBoard(){
         while (true) {
             makeFirstLine();
@@ -54,6 +93,18 @@ public class MainActivity extends AppCompatActivity {
                 move();
             } else break;
             turnLeft();
+        }
+    }
+
+    private void makeFirstLine() {
+        while(true){
+            dropBeeper();
+            if(isFrontClear()){
+                move();
+            } else break;
+            if(isFrontClear()){
+                move();
+            } else break;
         }
     }
 
@@ -85,17 +136,7 @@ public class MainActivity extends AppCompatActivity {
         turnLeft();
     }
 
-    private void makeFirstLine() {
-        while(true){
-            dropBeeper();
-            if(isFrontClear()){
-                move();
-            } else break;
-            if(isFrontClear()){
-                move();
-            } else break;
-        }
-    }
+
 
     public void cleanField(){
         while(true){
