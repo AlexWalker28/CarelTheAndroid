@@ -9,14 +9,14 @@ public class CarelGrid extends Object {
 
     public CarelGrid() {
         map = new int[6][4];
-        map[1][1] = 1;
+        map[5][0] = 1;
         map[3][3] = 1;
-        map[3][2] = 0;
+        map[3][2] = 1;
 
         walls = new String[6][4];
-        walls[2][1] = wallBlock;
+        /*walls[2][1] = wallBlock;
         walls[2][2] = wallBlock;
-        walls[2][3] = wallBlock;
+        walls[2][3] = wallBlock;*/
     }
 
     public int getWidth() {

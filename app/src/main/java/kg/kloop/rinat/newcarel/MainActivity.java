@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
         //Здесь пишем, что Карел должен делать.********************
 
 
-        //Задание: Карел должен выложить биперы на всем поле в шахматном порядке
 
 
 
@@ -39,6 +38,125 @@ public class MainActivity extends AppCompatActivity {
 
     }//Здесь пишем новые методы.***********************************
 
+    private void makeChessBoard(){
+        while (true) {
+            makeFirstLine();
+            goBack();
+            turnLeft();
+            if (isFrontClear()) {
+                move();
+            } else break;
+            turnLeft();
+            makeSecondLine();
+            goBack();
+            turnLeft();
+            if (isFrontClear()) {
+                move();
+            } else break;
+            turnLeft();
+        }
+    }
+
+    private void makeSecondLine() {
+        while (true){
+            if(isFrontClear()){
+                move();
+            } else break;
+            dropBeeper();
+            if(isFrontClear()){
+                move();
+            }else break;
+        }
+    }
+
+    private void goBack() {
+        turnAround();
+        goToWall();
+    }
+
+    private void goToWall() {
+        while (isFrontClear()){
+            move();
+        }
+    }
+
+    private void turnAround() {
+        turnLeft();
+        turnLeft();
+    }
+
+    private void makeFirstLine() {
+        while(true){
+            dropBeeper();
+            if(isFrontClear()){
+                move();
+            } else break;
+            if(isFrontClear()){
+                move();
+            } else break;
+        }
+    }
+
+    public void cleanField(){
+        while(true){
+            removeLineOfBeepers();
+            turnRight();
+            if(isFrontClear()){
+                move();
+            } else break;
+            turnRight();
+            removeLineOfBeepers();
+            turnLeft();
+            if(isFrontClear()){
+                move();
+            } else break;
+            turnLeft();
+        }
+    }
+
+
+    private void removeLineOfBeepers() {
+        while (isFrontClear()){
+            if(isBeeper()){
+                collectBeeper();
+            }
+            move();
+        }
+        if(isBeeper()){
+            collectBeeper();
+        }
+    }
+
+    private void fillFieldWithBeepers() {
+        while(true){
+            makeLineOfBeepers();
+            turnRight();
+            if(isFrontClear()){
+                move();
+            } else break;
+            turnRight();
+            makeLineOfBeepers();
+            turnLeft();
+            if(isFrontClear()){
+                move();
+            } else break;
+            turnLeft();
+        }
+    }
+
+    private void turnRight() {
+        for(int i = 0; i<3; i++){
+            turnLeft();
+        }
+    }
+
+    private void makeLineOfBeepers() {
+        while (isFrontClear()){
+            dropBeeper();
+            move();
+        }
+        dropBeeper();
+    }
 
 
     //Дальше ничего не меняем.*************************************
