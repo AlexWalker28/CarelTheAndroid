@@ -31,12 +31,20 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
         //Дальше ничего не меняем.*********************************
 
 
 
 
     }//Здесь пишем новые методы.***********************************
+
+    private void makeX(){
+        makeLeftDiagonal();
+        goToRightCornerOfX();
+        makeLeftDiagonal();
+    }
 
     private void makeRightDiagonal() {
         while (true){
