@@ -38,6 +38,51 @@ public class MainActivity extends AppCompatActivity {
 
     }//Здесь пишем новые методы.***********************************
 
+    private void makeRightDiagonal() {
+        while (true){
+            if (!isBeeper()) {
+                dropBeeper();
+            }
+            if(isFrontClear()){
+                move();
+            } else break;
+            turnLeft();
+            if(isFrontClear()){
+                move();
+            }else break;
+            turnRight();
+        }
+    }
+
+    private void goToRightCornerOfX() {
+        turnAround();
+        moveToWall();
+        turnLeft();
+        move();
+    }
+
+    private void moveToWall() {
+        while (isFrontClear()){
+            move();
+        }
+    }
+
+    private void makeLeftDiagonal() {
+        while (true) {
+            if (!isBeeper()) {
+                dropBeeper();
+            }
+            if (isFrontClear()) {
+                move();
+            } else break;
+            turnRight();
+            if (isFrontClear()) {
+                move();
+            } else break;
+            turnLeft();
+        }
+    }
+
     private void makeChessField(){
         while (true){
             makeChessLine();
