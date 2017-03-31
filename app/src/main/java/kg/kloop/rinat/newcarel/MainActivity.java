@@ -32,13 +32,45 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
         //Дальше ничего не меняем.*********************************
 
 
 
 
     }//Здесь пишем новые методы.***********************************
+
+    private void findCenter() {
+        dropBeepersOnBothSides();
+        while (true){
+            if(isFrontClear()){
+                move();
+            }
+            while (!isBeeper()){
+                move();
+            }
+            turnAround();
+            move();
+            if(isBeeper()) break;
+            dropBeeper();
+        }
+    }
+
+    private void dropBeepersOnBothSides() {
+        dropBeeper();
+        moveToWall();
+        dropBeeper();
+        turnAround();
+        moveToWall();
+        turnAround();
+    }
+
+    private void returnHome() {
+        turnLeft();
+        moveToWall();
+        turnLeft();
+        moveToWall();
+        turnAround();
+    }
 
     private void makeX(){
         makeLeftDiagonal();
