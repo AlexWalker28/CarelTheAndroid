@@ -31,13 +31,40 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
         //Дальше ничего не меняем.*********************************
 
 
 
 
     }//Здесь пишем новые методы.***********************************
+
+    private void collectBeepersOnField() {
+        while(true) {
+            checkLineForBeepers();
+            goBack();
+            turnLeft();
+            if(isFrontClear()){
+                move();
+            } else break;
+            turnLeft();
+        }
+    }
+
+    private void checkLineForBeepers() {
+            while (isFrontClear()){
+                move();
+                if(isBeeper()){
+                    collectBeeper();
+                    returnBeeperHome();
+                }
+            }
+    }
+
+    private void returnBeeperHome() {
+        returnHome();
+        dropBeeper();
+
+    }
 
     private void findCenter() {
         dropBeepersOnBothSides();
