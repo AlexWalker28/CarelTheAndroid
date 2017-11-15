@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Здесь пишем, что Карел должен делать.********************
 
-
+        turnRight();
 
 
 
@@ -36,6 +36,11 @@ public class MainActivity extends AppCompatActivity {
 
     }//Здесь пишем новые методы.***********************************
 
+    private void turnRight(){
+        for(int i = 0; i<3; i++){
+            turnLeft();
+        }
+    }
 
 
     //Дальше ничего не меняем.*************************************
