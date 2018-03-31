@@ -13,7 +13,6 @@ public class MainActivity extends AppCompatActivity {
     private GameCanvas canvas;
     private Carel carel;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,26 +20,20 @@ public class MainActivity extends AppCompatActivity {
 
         init();
 
-
         //Здесь пишем, что Карел должен делать.********************
 
-        turnRight();
 
 
 
 
         //Дальше ничего не меняем.*********************************
 
-
-
-
-    }//Здесь пишем новые методы.***********************************
-
-    private void turnRight(){
-        for(int i = 0; i<3; i++){
-            turnLeft();
-        }
     }
+    //Здесь пишем новые методы.***********************************
+
+
+
+
 
 
     //Дальше ничего не меняем.*************************************
@@ -75,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void init() {
-        textView = (TextView)findViewById(R.id.textView);
+        textView = findViewById(R.id.textView);
         grid = new CarelGrid();
         canvas = new GameCanvas(textView);
         carel = new Carel(canvas, grid);
